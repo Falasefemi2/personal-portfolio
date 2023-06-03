@@ -1,16 +1,38 @@
-import Header from "./components/Header"
+import { createBrowserRouter, RouterProvider } from "react-router-dom"
+import Root from "./routes/Root"
 import Hero from "./components/Hero"
-import Projects from "./components/Projects"
-import SocialLinks from "./components/SocialLinks"
+import Projects from "./pages/Projects"
+import AboutMe from "./pages/AboutMe"
+import Contacts from "./pages/Contacts"
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Root />,
+    children: [
+      {
+        path: "/",
+        element: <Hero />
+      },
+      {
+        path: "/projects",
+        element: <Projects />
+      },
+      {
+        path: "/aboutme",
+        element: <AboutMe />
+      },
+      {
+        path: "/contact",
+        element: <Contacts />
+      }
+    ]
+  }
+])
 
 const App = () => {
   return (
-    <main className=" bg-secondary-light">
-      <Header />
-      <Hero />
-      <Projects />
-      <SocialLinks />
-    </main>
+    <RouterProvider router={router} />
   )
 }
 
