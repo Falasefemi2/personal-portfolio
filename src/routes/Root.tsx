@@ -8,6 +8,7 @@ const Root = () => {
             <Header />
             <Outlet />
             <SocialLinks />
+            <ScrollRestoration />
         </main>
     )
 }

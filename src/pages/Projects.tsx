@@ -33,7 +33,6 @@ const fetchProjects = async () => {
 
 const Projects = () => {
     const { data: projects } = useQuery<Project[], Error>(["projects"], fetchProjects);
-    console.log(projects);
 
     return (
         <section className="py-5 md:py-10 mt-5 md:mt-10">
