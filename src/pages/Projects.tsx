@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { client, urlFor } from "../client";
+import {motion} from "framer-motion";
 
 
 const truncateString = (str: string, num: number) => {
@@ -42,7 +43,11 @@ const Projects = () => {
             <div className="container mx-auto">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-6 md:gap-10">
                     {projects && projects.map((project) => (
-                        <div key={project._id} className="border border-gray-200 rounded-md p-4">
+                        <motion.div 
+                        whileInView={{opacity: 1}}
+                        whileHover={{scale: 1.1}}
+                        transition={{duration: 0.5, type: "tween"}}
+                        key={project._id} className="border border-gray-200 rounded-md p-4">
                             <img src={urlFor(project.image)} alt={project.title} className="w-full h-auto mb-4" />
                             <h2 className="font-medium text-lg mb-2">{project.title}</h2>
                             <p className="text-gray-500 mb-2">{truncateString(project.description, 100)}</p>
@@ -58,7 +63,7 @@ const Projects = () => {
                                     </a>
                                 </button>
                             </div>
-                        </div>
+                        </motion.div>
                     ))}
                 </div>
             </div>
