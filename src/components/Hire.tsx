@@ -1,10 +1,27 @@
 import { GrClose } from "react-icons/gr"
+import emailjs from 'emailjs-com';
+
 
 type closeProp ={
     closeModal: () => void
 }
 
 const Hire = ({ closeModal }: closeProp) => {
+    const sendEmail = (e: React.FormEvent) => {
+        e.preventDefault();
+    
+        emailjs.sendForm('service_0rqshaf', 'template_aa0iflm', e.target as HTMLFormElement, '9ZstpyXUm1kS8a33v')
+          .then((result) => {
+            console.log(result.text);
+            // Add any success handling logic here
+          }, (error) => {
+            console.log(error.text);
+            // Add any error handling logic here
+          });
+    
+        closeModal();
+      };
+    
   return (
     <div>
         <div className="fixed inset-0 z-30 transition-all duration-500">
@@ -19,7 +36,7 @@ const Hire = ({ closeModal }: closeProp) => {
                             </button>
                         </div>
                         <div className="p-5 w-full h-full">
-                            <form className="max-w-xl m-4 text-left">
+                            <form className="max-w-xl m-4 text-left" onSubmit={sendEmail}>
                                 <div>
                                     <input type="text" className="w-full px-5 py-2 border dark:border-secondary-dark rounded-md text-md bg-secondary-light dark:bg-ternary-dark text-primary-dark dark:text-ternary-light" id="name" name="name" placeholder="Name" aria-label="Name" />
                                 </div>

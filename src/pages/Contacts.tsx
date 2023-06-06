@@ -1,15 +1,32 @@
 import { AiOutlineMail } from "react-icons/ai"
 import { GrLocation } from "react-icons/gr"
 import {BsTelephonePlus} from "react-icons/bs"
-
+import emailjs from "emailjs-com"
+import { toast } from "react-hot-toast"
 
 
 const Contacts = () => {
+    
+    function sendEmail(e: any) {
+        e.preventDefault();
+      
+        emailjs.sendForm('service_0rqshaf', 'template_wj8h6wc', e.target, '9ZstpyXUm1kS8a33v')
+          .then((result) => {
+            console.log(result.text);
+            toast.success('Message sent!'); 
+
+            // Optionally, show a success message to the user
+          }, (error) => {
+            console.log(error.text);
+            // Optionally, show an error message to the user
+            toast.error('Failed to send message.'); // Display error toast
+          });
+      }
     return (
         <div className="container mx-auto flex flex-col-reverse lg:flex-row py-5 lg:py-10 lg:mt-10">
             <div className="w-full lg:w-1/2">
                 <div className="leading-loose">
-                    <form className="max-w-xl m-4 p-6 md:p-10 bg-secondary-light dark:bg-secondary-dark rounded-xl shadow-xl text-left">
+                    <form className="max-w-xl m-4 p-6 md:p-10 bg-secondary-light dark:bg-secondary-dark rounded-xl shadow-xl text-left" onSubmit={sendEmail}>
                         <p className="font-general-medium text-primary-dark dark:text-primary-light text-2xl mb-8">Contact Form</p>
                         <div className="mb-4">
                             <label className="block text-lg text-primary-dark dark:text-primary-light mb-1">Full Name</label>

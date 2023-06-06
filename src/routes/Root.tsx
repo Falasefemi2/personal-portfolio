@@ -1,6 +1,7 @@
 import { Outlet, ScrollRestoration } from "react-router-dom"
 import Header from "../components/Header"
 import SocialLinks from "../components/SocialLinks"
+import { Toaster } from "react-hot-toast";
 
 const Root = () => {
     return (
@@ -8,6 +9,7 @@ const Root = () => {
             <Header />
             <Outlet />
             <SocialLinks />
+            <Toaster />
             <ScrollRestoration />
         </main>
     )
