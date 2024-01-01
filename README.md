@@ -1,2 +1,1 @@
-# personal-portfolio
-CheckOout Live Website on: https://personal-portfolio-ten-lac.vercel.app/
+https://personal-portfolio-ten-lac.vercel.app/
